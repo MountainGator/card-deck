@@ -40,7 +40,13 @@ const CardDeck = () => {
         addCard(await drawCard(), angle);
     }
 
-    
+    const handleShuffle = async (e) => {
+        e.preventDefault();
+        setDeck([]);
+        setAngle(0);
+        const response = await axios.get(`http://deckofcardsapi.com/api/deck/${deckIDRef.current}/shuffle/`);  
+        setAllow(!allow);
+    }
 
 
     const addCard = ({image, value, suit, remaining}, angle) => {
@@ -50,7 +56,8 @@ const CardDeck = () => {
 
     return (
         <div id="container">
-            {allow && <button id="draw-card" onClick={handleSubmit}>Draw Card</button>}
+            {allow && <button class="draw-card" onClick={handleSubmit}>Draw Card</button>}
+            {!allow && <button class="draw-card" onClick={handleShuffle}>Shuffle Deck</button>}
             {deck.map(({ image, value, suit, angle }) => <Card 
             key={uuidv4()}
             id={uuidv4()}
