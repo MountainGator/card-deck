@@ -55,8 +55,8 @@ const CardDeck = () => {
 
     return (
         <div id="container">
-            {allow && <button class="draw-card reg" onClick={handleSubmit}>Draw Card</button>}
-            {!allow && <button class="draw-card red" onClick={handleShuffle}>Shuffle Deck</button>}
+            {allow && <button className="draw-card reg" onClick={handleSubmit}>Draw Card</button>}
+            {deckIDRef.current && <button className="draw-card red" onClick={handleShuffle}>Shuffle Deck</button>}
             {deck.map(({ image, value, suit, angle }) => 
                 <Card 
                     key={uuidv4()}
