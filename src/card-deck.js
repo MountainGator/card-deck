@@ -45,7 +45,7 @@ const CardDeck = () => {
         setDeck([]);
         setAngle(0);
         await axios.get(`http://deckofcardsapi.com/api/deck/${deckIDRef.current}/shuffle/`);  
-        setAllow(!allow);
+        setAllow(true);
     }
 
     const addCard = ({image, value, suit, remaining}, angle) => {
